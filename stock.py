@@ -4,6 +4,14 @@ import time
 from datetime import datetime
 import base64
 
+# App configuration - MUST BE FIRST STREAMLIT COMMAND
+st.set_page_config(
+    page_title="StockTracker",
+    page_icon="📈",
+    layout="centered",
+    initial_sidebar_state="collapsed"
+)
+
 # Hide the Streamlit footer and menu
 st.markdown(
     """
@@ -13,14 +21,6 @@ st.markdown(
     </style>
     """,
     unsafe_allow_html=True
-)
-
-# App configuration
-st.set_page_config(
-    page_title="StockTracker",
-    page_icon="📈",
-    layout="centered",
-    initial_sidebar_state="collapsed"
 )
 
 # Custom CSS for fixed Bloomberg terminal-like design

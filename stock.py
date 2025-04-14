@@ -3,6 +3,7 @@ import requests
 import time
 from datetime import datetime
 import base64
+from datetime import timezone, timedelta
 
 # App configuration - MUST BE FIRST STREAMLIT COMMAND
 st.set_page_config(
@@ -411,6 +412,10 @@ if 'last_updated' not in st.session_state:
 if 'history' not in st.session_state:
     st.session_state.history = []
 
+def get_current_time():
+    """Get current time in the correct timezone"""
+    return datetime.now(timezone.utc).astimezone().strftime("%H:%M")
+
 def get_stock_data(symbol):
     """Fetch real-time stock data from Tiingo IEX API"""
     url = f"https://api.tiingo.com/iex/{symbol}"
@@ -434,7 +439,7 @@ def get_stock_data(symbol):
                 "price": real_time_price,
                 "prev_close": prev_close,
                 "percent_change": percent_change,
-                "timestamp": datetime.now().strftime("%H:%M"),
+                "timestamp": get_current_time(),
                 "high": item.get("high", 0),
                 "low": item.get("low", 0),
                 "volume": item.get("volume", 0)
@@ -470,7 +475,7 @@ def format_large_number(num):
 st.markdown('<div class="mobile-container">', unsafe_allow_html=True)
 
 # Status bar
-current_time = datetime.now().strftime("%H:%M")
+current_time = get_current_time()
 st.markdown(f'''
 <div class="status-bar">
     <span>4G</span>

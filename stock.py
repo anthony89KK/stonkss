@@ -142,7 +142,7 @@ st.markdown("""
     /* Main content area */
     .main-content {
         position: fixed;
-        top: 50px;
+        top: 15px;
         left: 0;
         right: 0;
         bottom: 80px;
@@ -625,7 +625,7 @@ if 'history' not in st.session_state:
     st.session_state.history = []
 
 # Your Weatherstack API key
-WEATHER_API_KEY = 'd1ab104408d995bc424c212458c478dc'
+WEATHER_API_KEY = '8e2d499cf0adc59768e1a98a721985f5'
 
 # Function to fetch weather based on location
 def get_weather(location):

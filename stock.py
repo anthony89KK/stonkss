@@ -4,6 +4,17 @@ import time
 from datetime import datetime
 import base64
 
+# Hide the Streamlit footer and menu
+st.markdown(
+    """
+    <style>
+    #MainMenu {visibility: hidden;}
+    footer {visibility: hidden;}
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
 # App configuration
 st.set_page_config(
     page_title="StockTracker",

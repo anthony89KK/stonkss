@@ -1,9 +1,9 @@
 import streamlit as st
 import requests
 import time
-from datetime import datetime
+from datetime import datetime, timedelta
 import base64
-from datetime import timezone, timedelta
+from datetime import timezone
 
 # App configuration - MUST BE FIRST STREAMLIT COMMAND
 st.set_page_config(
@@ -413,8 +413,8 @@ if 'history' not in st.session_state:
     st.session_state.history = []
 
 def get_current_time():
-    """Get current time in the correct timezone"""
-    return datetime.now(timezone.utc).astimezone().strftime("%H:%M")
+    """Get current time plus one hour"""
+    return (datetime.now() + timedelta(hours=1)).strftime("%H:%M")
 
 def get_stock_data(symbol):
     """Fetch real-time stock data from Tiingo IEX API"""
